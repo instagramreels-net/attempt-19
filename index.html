@@ -22,10 +22,14 @@ body{
     font-weight:bold;
 }
 .page{
-    max-width:750px;
+    max-width:850px;
     padding:30px;
     position:relative;
     z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 h1{
     color:#b30059;
@@ -47,14 +51,33 @@ button{
 button:hover{
     transform:scale(1.08);
 }
-#page2{
+#page2,
+#page3{
     display:none;
 }
-#page2 p{
+/* Letter */
+.letter{
+    position:relative;
+    background:white;
     color:#b30059;
     font-size:2rem;
     line-height:1.7;
+    max-width:700px;
+    padding:55px 40px;
+    border-radius:15px;
+    border:2px solid #ffe0ec;
+    box-shadow:0 12px 35px rgba(0,0,0,0.12);
 }
+/* PS Button */
+.ps-button{
+    position:absolute;
+    top:15px;
+    right:15px;
+    padding:8px 15px;
+    font-size:0.9rem;
+    border-radius:10px;
+}
+/* Fade In */
 .fade-in{
     animation:fadeIn 2.5s ease forwards;
 }
@@ -68,6 +91,7 @@ button:hover{
         transform:translateY(0);
     }
 }
+/* Floating Emojis */
 .floating-container{
     position:fixed;
     top:0;
@@ -99,6 +123,7 @@ button:hover{
 </head>
 <body>
 <div class="floating-container" id="floatingContainer"></div>
+<!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>
         Can't believe a dumbaah like you actually made it all the way here 🥰
@@ -107,24 +132,59 @@ button:hover{
         okay?
     </button>
 </div>
+<!-- PAGE 2 -->
 <div id="page2" class="page">
-    <p>
-        Janya Yb,
-        <br><br>
-        You've made me the happiest person on Earth.
-        Thank you for making this the best month of my life.
-        <br><br>
-        I really, really love ya sm 🥰
-    </p>
+    <div class="letter">
+        <button class="ps-button" onclick="showPage3()">
+            P.S.
+        </button>
+        <p>
+            Janya Yb,
+            <br><br>
+            You've made me the happiest person on Earth.
+            <br><br>
+            Thank you for making this the best month of my life.
+            <br><br>
+            You mean the world to me.
+            <br><br>
+            I really, really love ya sm 🥰
+        </p>
+    </div>
+</div>
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+    <div class="letter">
+        <p>
+            P.S.
+            <br><br>
+            While coding this, I realised how ridiculously quirky this whole thing is 😭
+            <br><br>
+            Like imagine explaining to someone that I made you go through a scavenger hunt that ends with a website just so I could tell you how much you mean to me.
+            <br><br>
+            That being said...
+            <br><br>
+            I do mean every word of it.
+            <br><br>
+            🥰
+        </p>
+    </div>
 </div>
 <script>
 function showPage2(){
     document.getElementById("page1").style.display = "none";
     const page2 = document.getElementById("page2");
-    page2.style.display = "block";
+    page2.style.display = "flex";
     page2.classList.remove("fade-in");
     void page2.offsetWidth;
     page2.classList.add("fade-in");
+}
+function showPage3(){
+    document.getElementById("page2").style.display = "none";
+    const page3 = document.getElementById("page3");
+    page3.style.display = "flex";
+    page3.classList.remove("fade-in");
+    void page3.offsetWidth;
+    page3.classList.add("fade-in");
 }
 function createEmoji(){
     const emoji = document.createElement("div");
